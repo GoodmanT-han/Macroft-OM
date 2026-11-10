@@ -1,10 +1,12 @@
 # CNN、BBC、G1 每日新闻简报
 
-在 Windows 上解压整个文件夹，再双击 `start.cmd`。程序会抓取圣保罗当天发布的报道，生成 `reports/YYYY-MM-DD.html` 并在浏览器打开。再次运行会把当天新发现的报道合入同一份简报。保留 `reports/archive.sqlite3` 即可保留已经抓取到的记录。
+在 Windows 上解压整个文件夹，再双击 `start.cmd`。如果下载的是整个 GitHub 仓库，先进入解压后的 `daily-news-digest` 子文件夹。程序会抓取圣保罗当天发布的报道，生成 `reports/YYYY-MM-DD.html` 并尝试在浏览器打开。窗口会保留运行结果和简报位置，按任意键即可关闭。再次运行会把当天新发现的报道合入同一份简报。保留 `reports/archive.sqlite3` 即可保留已经抓取到的记录。
 
 ## 单独安装和运行
 
-启动器优先尝试本机 Codex 自带的 Python。也可以使用 Python 3.10 或更新版本，在解压后的文件夹中运行以下命令。在 Windows 上可以把命令中的 `python` 换成 `py -3`。
+启动器可以使用本机 Codex 自带的 Python。若使用系统 Python，须安装 [Python 3.10 或更新版本](https://www.python.org/downloads/windows/)。首次运行时，启动器会在需要时将依赖安装到程序文件夹的 `.venv` 中。
+
+也可以在解压后的文件夹中用以下命令手动运行。在 Windows 上可以把命令中的 `python` 换成 `py -3`。
 
 ```powershell
 python -m pip install -r requirements.txt

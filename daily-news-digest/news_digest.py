@@ -400,9 +400,15 @@ def main():
             ORDER BY breaking DESC, live DESC, headline DESC, published DESC, key
         """, (day,)).fetchall()
         write_report(report, render(day, now, rows, args.limit, results))
-    print(f"已生成简报（{len(rows)} 条）：{report.resolve()}")
+    report = report.resolve()
+    print(f"已生成简报（{len(rows)} 条）：{report}")
     if args.open:
-        webbrowser.open(report.resolve().as_uri())
+        try:
+            opened = webbrowser.open(report.as_uri())
+        except (OSError, webbrowser.Error):
+            opened = False
+        if not opened:
+            print("未能自动打开浏览器。请从上面的路径手动打开简报。")
     return int(bool(results) and not any(result.ok for result in results))
 
 
